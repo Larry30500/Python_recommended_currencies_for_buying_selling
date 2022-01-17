@@ -95,6 +95,8 @@
   ```
   
   ![matplotlib_01](images/matplotlib_01.gif)
+  
+  * 歷史外匯走勢圖
   ![twbank_currency_rates](images/twbank_currency_rates.png)
 
 ### 4. 使用 os 模組，創建資料夾 (創建前先檢查是否存在資料夾) 並儲存圖片 (.png)。
