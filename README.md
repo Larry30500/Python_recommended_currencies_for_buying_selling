@@ -19,7 +19,7 @@
 ### 3. 主要功能為：輸入欲查詢的天數，面板將顯示分析後的資料，並推薦適合買入與賣出的貨幣給使用者參考。
 ### 3. 附加功能為：(1)繪出分析後的歷史外匯走勢圖並儲存於資料夾中 (2)協助導覽至臺灣銀行外匯網頁。
 
-![recommended_currencies_01](images/recommended_currencies_01.gif)
+![recommended_currencies01](images/recommended_currencies01.gif)
 
 <strong><em>若您有興趣想更了解此程式，請參考下方的聯絡方式，進一步聯絡作者，謝謝參閱。</em></strong>
 
@@ -70,7 +70,7 @@
     ⋮
   ```
   
-  ![tkinter_01](images/tkinter_01.gif)
+  ![tkinter01](images/tkinter01.gif)
 
 ### 3. 使用 Matplotlib 模組，將外匯資料繪出歷史外匯走勢圖。
   ```python
@@ -94,10 +94,10 @@
     plt.show() 
   ```
   
-  ![matplotlib_01](images/matplotlib_01.gif)
+  ![matplotlib01](images/matplotlib01.gif)
   
   * 歷史外匯走勢圖
-  ![twbank_currency_rates](images/twbank_currency_rates.png)
+  ![twbank_currency_rates01](images/twbank_currency_rates01.png)
 
 ### 4. 使用 os 模組，創建資料夾 (創建前先檢查是否存在資料夾) 並儲存圖片 (.png)。
   ```python
@@ -107,14 +107,14 @@
     plt.savefig(f'{folder_name}/twbank_currency_rates.png')
   ```
   
-  ![matplotlib_02](images/matplotlib_02.gif)
+  ![matplotlib02](images/matplotlib02.gif)
 
 ### 5. 使用 webbrowser 模組，協助導覽至目標網站
   ```python
   def open_url():
     webbrowser.get('C:/Program Files/Google/Chrome/Application/chrome.exe % --incognito').open_new_tab(導覽網址)
   ```
-  ![webbrowser_01](images/webbrowser_01.gif)
+  ![webbrowser01](images/webbrowser01.gif)
 
 
 ## 系統環境
