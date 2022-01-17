@@ -19,7 +19,7 @@
 ### 3. 主要功能為：輸入欲查詢的天數，面板將顯示分析後的資料，並推薦適合買入與賣出的貨幣給使用者參考。
 ### 3. 附加功能為：(1)繪出分析後的歷史外匯走勢圖並儲存於資料夾中 (2)協助導覽至臺灣銀行外匯網頁。
 
-![recommended_currencies_01](images/0recommended_currencies_01.gif)
+![recommended_currencies_01](images/recommended_currencies_01.gif)
 
 <strong><em>若您有興趣想更了解此程式，請參考下方的聯絡方式，進一步聯絡作者，謝謝參閱。</em></strong>
 
@@ -107,7 +107,7 @@
     plt.savefig(f'{folder_name}/twbank_currency_rates.png')
   ```
   
-  ![matplotlib_02](images/0matplotlib_02.gif)
+  ![matplotlib_02](images/matplotlib_02.gif)
 
 ### 5. 使用 webbrowser 模組，協助導覽至目標網站
   ```python
