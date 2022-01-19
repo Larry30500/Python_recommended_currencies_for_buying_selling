@@ -137,7 +137,7 @@
 * Beautiful Soup：4.9
 
 
-## 聯絡資料
+## 聯絡資訊
 👤 **Larry Jhuang**
   * Email: larry30500@gmail.com
 
