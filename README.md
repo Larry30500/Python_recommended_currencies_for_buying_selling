@@ -32,6 +32,7 @@
   for URL_index in range(貨幣種類):
     html_page = urllib.request.urlopen(貨幣網址)
     ⋮
+    
     dates_in_source_codes = sp.select(日期, limit = input_days)
     spot_rates_codes = sp.select(匯率, limit = input_days * 2)
     ⋮
@@ -42,6 +43,7 @@
   for row_index in range(len(dates_in_source_codes)):
     date_without_year = dates_in_source_codes[row_index].text.replace('2021/', '')
     ⋮
+    
   for row_index in range(0, len(spot_rates_codes), 2):
     buying_spot_rates.append(float(spot_rates_codes[row_index].text))
     selling_spot_rates.append(float(spot_rates_codes[row_index + 1].text))
@@ -51,10 +53,11 @@
 * 從擷取的即期匯率中，依序分析四種貨幣匯率，根據匯率漲跌幅的高低，降序排列貨幣與資料的序位
 * 範例 [('澳幣', [最大值, 最小值, 平均值, 初始值, 現行值, 漲跌]), ('美金', [...]), ('人民幣', [...]), ('日圓', [...])]
   ```python
+  
   ⋮
   sorted_buying_spot_rates = sorted(buying_spot_rate_data.items(), key = lambda x: x[1][5], reverse = True)
   sorted_selling_spot_rates = sorted(selling_spot_rate_data.items(), key = lambda x: x[1][5], reverse = True)
-  ⋮
+  ⋮  
   ```
   
 ### 2. 使用 Tkinter 模組，產生圖形化介面的操作面板，方便使用者檢視與操作。
@@ -62,10 +65,13 @@
   ```python
   def analysis_data():
     ⋮
+    
   def clear_data():
     ⋮
+    
   def check_chart():
     ⋮
+    
   def open_url():
     ⋮
   ```
@@ -77,20 +83,25 @@
   def check_chart():
     plt.figure(figsize = (15, 9), facecolor = 'whitesmoke', edgecolor = 'black', linewidth = 1)
       ⋮
+      
     for index_currency_names in range(currency_amount):
       ⋮
+      
       buying_line = some_buying_spot_rates[index_currency_names]
       selling_line = some_selling_spot_rates[index_currency_names]
       ⋮
+      
       plt.subplot(currency_amount, 1, index_currency_names + 1)
       plt.plot(rate_dates, buying_line, color = plt_colors[index_currency_names], ls = '--', marker = 'x', lw = '2', ms = '7', label = plt_actions[0])
       plt.plot(rate_dates, selling_line, color = plt_colors[index_currency_names], ls = '--', marker = 'o', lw = '2', ms = '7', label = plt_actions[1])
       plt.legend(bbox_to_anchor = (1.1, 0.5), loc = 'right', prop = plt_font)
-      ⋮      
+      ⋮  
+      
       # 新增買入與賣出的資料標籤
       for a, b in zip(rate_dates, buying_line):
         plt.text(a, b, f'{b}', ha = 'center', va = 'bottom', fontsize = 7)
         ⋮
+        
     plt.show() 
   ```
   
@@ -103,6 +114,7 @@
   ```python
   def open_url():
     ⋮
+    
     if not os.path.exists(folder_name): os.mkdir(folder_name)
     plt.savefig(f'{folder_name}/twbank_currency_rates.png')
   ```
@@ -112,13 +124,13 @@
 ### 5. 使用 webbrowser 模組，協助導覽至目標網站
   ```python
   def open_url():
-    webbrowser.get('C:/Program Files/Google/Chrome/Application/chrome.exe % --incognito').open_new_tab(導覽網址)
+    webbrowser.get('C:/Program Files/Google/Chrome/Application/chrome.exe % --incognito').open_new_tab('網址')
   ```
   ![webbrowser01](images/webbrowser01.gif)
 
 
 ## 系統環境
-### 作業系統
+### 本程式所在作業系統
 * OS：Windows 7 / 10 (Mac OS、Linux 系統亦可相容)
 
 ### 相關套件
@@ -132,7 +144,7 @@
 
 
 ## 致謝
-*非常感謝指導老師 (Francesco Ke) 提供程式設計的靈感和方向，並細心指導學生編寫程式時，所需注重的細節。*
+*非常感謝指導老師 (Francesco Ke) 提供程式設計的靈感和方向，並充分教導程式設計的注意事項和相關細節。*
 
 *如果您喜歡此專案，記得點擊⭐️支持作者。*
 
