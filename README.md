@@ -29,33 +29,18 @@
 
 ## 重點程式碼說明
 ### 1. 本作品內含網路爬蟲的相關技術，可自動擷取目前臺灣銀行之即時的外匯資料。
-* 先至臺灣銀行外匯網頁，檢視網頁程式碼，找到需要的類別名稱，爬取特定貨幣的對應日期與匯率資料。
 ```python
-for URL_index in range('貨幣種類'):
-  html_page = urllib.request.urlopen('網址')
-  ⋮
+# 於臺灣銀行的外匯資訊相關網頁 (https://rate.bot.com.tw/xrt?Lang=zh-TW)，讀取其網頁資料，並找到需要擷取的特定部分。
+html_page = urllib.request.urlopen('https://rate.bot.com.tw/xrt?Lang=zh-TW')
+sp = BeautifulSoup(html_page, 'html.parser')
 
-  dates_in_source_codes = sp.select('日期', limit = input_days)
-  spot_rates_codes = sp.select('匯率', limit = input_days * 2)
-  ⋮
-```
-  
-* 從爬蟲獲取的外匯資料中，擷取對應日期和買入/賣出的即期匯率。
-```python  
-for row_index in range(len(dates_in_source_codes)):
-  date_without_year = dates_in_source_codes[row_index].text.replace('2021/', '')
-  ⋮
-
-for row_index in range(0, len(spot_rates_codes), 2):
-  buying_spot_rates.append(float(spot_rates_codes[row_index].text))
-  selling_spot_rates.append(float(spot_rates_codes[row_index + 1].text))
-  ⋮
-```
-  
-* 從擷取的即期匯率中，計算四種貨幣的匯率漲跌幅，根據匯率漲跌幅的高低，降序排列貨幣與資料的序位。
-* 範例 [('澳幣', [最大值, 最小值, 平均值, 初始值, 現行值, 漲跌]), ('美金', [...]), ('人民幣', [...]), ('日圓', [...])]。
-```python  
+# 從爬蟲獲取的外匯資料中，擷取買入/賣出的即期匯率及其對應的日期。
+dates_in_source_codes = sp.select('日期')
+spot_rates_codes = sp.select('匯率')
 ⋮
+
+# 從擷取的即期匯率中，計算四種貨幣的匯率漲跌幅，根據匯率漲跌幅的高低，降序排列貨幣與資料的序位。
+# 範例 [('澳幣', [最大值, 最小值, 平均值, 初始值, 現行值, 漲跌]), ('美金', [...]), ('人民幣', [...]), ('日圓', [...])]。
 sorted_buying_spot_rates = sorted(buying_spot_rate_data.items(), key = lambda x: x[1][5], reverse = True)
 sorted_selling_spot_rates = sorted(selling_spot_rate_data.items(), key = lambda x: x[1][5], reverse = True)
 ⋮  
@@ -83,11 +68,11 @@ def open_url():
 
 &nbsp;
 
-### 3. 使用 Matplotlib 模組，將外匯資料繪出歷史外匯走勢圖。
+### 3. 使用 Matplotlib 模組，繪出歷史外匯走勢圖。
 ```python
 def check_chart():
   plt.figure(figsize = (15, 9), facecolor = 'whitesmoke', edgecolor = 'black', linewidth = 1)
-    ⋮
+  ⋮
 
   for index_currency_names in range(currency_amount):
     ⋮
@@ -112,12 +97,12 @@ def check_chart():
 
 ![matplotlib01](images/matplotlib01.gif)
   
-  * 歷史外匯走勢圖
+* 以下為歷史外匯走勢圖
 ![twbank_currency_rates01](images/twbank_currency_rates01.png)
 
 &nbsp;
 
-### 4. 使用 os 模組，創建資料夾 (創建前先檢查是否存在資料夾) 並儲存圖片 (.png)。
+### 4. 使用 os 模組，創建資料夾，創建前先檢查資料夾名稱是否存在，如果不存在，則創建新資料夾；如果存在則儲存圖片 (twbank_currency_rates.png)。
 ```python
 def open_url():
   ⋮
@@ -130,7 +115,7 @@ def open_url():
 
 &nbsp;
 
-### 5. 使用 webbrowser 模組，協助導覽至目標網站。
+### 5. 使用 webbrowser 模組，協助使用者導覽至台灣銀行的外匯網站。
 ```python
 def open_url():
   webbrowser.get('C:/Program Files/Google/Chrome/Application/chrome.exe % --incognito').open_new_tab('網址')
