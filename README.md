@@ -60,7 +60,9 @@ sorted_buying_spot_rates = sorted(buying_spot_rate_data.items(), key = lambda x:
 sorted_selling_spot_rates = sorted(selling_spot_rate_data.items(), key = lambda x: x[1][5], reverse = True)
 ⋮  
 ```
-  
+
+&nbsp;
+
 ### 2. 使用 Tkinter 模組，產生圖形化介面的操作面板，方便使用者檢視與操作。
 * 設計的操作面板具有 (1)分析資料 (2)清除資料 (3)檢視歷史外匯走勢圖 (4)導覽臺灣銀行外匯網站 之功能。
 ```python
@@ -78,6 +80,8 @@ def open_url():
 ```
   
 ![tkinter01](images/tkinter01.gif)
+
+&nbsp;
 
 ### 3. 使用 Matplotlib 模組，將外匯資料繪出歷史外匯走勢圖。
 ```python
@@ -109,7 +113,9 @@ def check_chart():
 ![matplotlib01](images/matplotlib01.gif)
   
   * 歷史外匯走勢圖
-  ![twbank_currency_rates01](images/twbank_currency_rates01.png)
+![twbank_currency_rates01](images/twbank_currency_rates01.png)
+
+&nbsp;
 
 ### 4. 使用 os 模組，創建資料夾 (創建前先檢查是否存在資料夾) 並儲存圖片 (.png)。
 ```python
@@ -121,6 +127,8 @@ def open_url():
 ```
 
 ![matplotlib02](images/matplotlib02.gif)
+
+&nbsp;
 
 ### 5. 使用 webbrowser 模組，協助導覽至目標網站。
 ```python
